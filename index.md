@@ -1,7 +1,7 @@
-# CardiovascularComplicationPrediction
+# Coronary Heart Disease Death Rate Risk-Level Prediction Based On Environmental, Non-Personal Parameters
 Project for "CS4641 - Machine Learning" by Team 46: Aditya Kumar, Farouk Marhaba, Kinnera Banda, and Maya Rajan.
 
-![summary figure](./images/randomBanner.jpg)
+![summary figure](./images/banner.jpg)
 
 ## Introduction & Background
 Coronary heart disease (CHD), the most common type of heart disease, kills over 300,000 people in the United States annually. It is caused by a buildup of plaque in the arteries that supply blood to the heart, limiting blood flow and increasing the risk of heart attacks. With early preventive measures, actions can be taken to significantly reduce the risk of CHD early on. 

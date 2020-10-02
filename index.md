@@ -10,7 +10,7 @@ Our project aims to predict the CHD death rate for a particular region based on 
 
 ### Dataset
 Our dataset is from the CDC Division for Heart Disease and Stroke Prevention Interactive Atlas, and each data point contains the following heading features; each feature includes several sub-features, such as hospital #, poverty %, etc.
-County and State name
+* County and State name
 * Coronary Heart Disease death rate per 100,000 for all ages, all races/ethnicities, both genders, for 2016-2018
 * Risk factors:
     * Diabetes %

@@ -28,17 +28,29 @@ We chose to forego other features like the number of neurosurgeons, neuro specia
 ### Cleaning Dataset
 The values that we pulled from the Interactive Atlas of Heart Disease and Stroke included “-1” values as representatives for Insufficient Data. Primarily, we eliminated all rows in the dataset that featured a -1. However, we were left with approximately 13% (1/8th) of the rows we previously had. As a result, we decided to analyze which features had the highest percentage of invalid data. The graph below plots the number of invalid values with the features in our dataset.
 
+<p align="center">
+ <img src="./images/Midterm_fig01.png" /> </br>
+ <b>Figure 1</b>. The number of invalid data points contained within each feature in the dataset.
+</p> 
 
 As illustrated, about 6 out of 47 features were contributing the most; we decided to eliminate all features that had more than 1000 invalid values. This resulted in about 82% of the rows being conserved.
 
 ### Normalizing Dataset
 The features in our cleaned dataset were scattered amongst different scales, which can influence the outcome of our classification algorithms (by skewing distance calculations, for example). We normalized each feature (and target) to fall within a range of 0.0-1.0.
+<p align="center">
+ <img src="./images/Midterm_fig02.png" /> </br>
+ <b>Figure 2</b>. The distribution of the normalized CHD death rate from our dataset.
+</p> 
 
 
 ## Methods
 
 ### Picking Risk Classification Bins
 Picking risk classification bins is an essential aspect of this project. We did not want a simple binary classifier with two bins, since we wanted to learn about multi-class classifiers. We settled on four classification bins: low, low-medium, medium-high, and high risk. Since our target value was not uniformly distributed, we could not split the target value range into 4 equally-spaced bins as most data points would fall within the same one or two bins. Rather, we decided to make the bins have an equal number of points. However, we are still looking into other ways to create these risk intervals.
+<p align="center">
+ <img src="./images/Midterm_fig03.png" /> </br>
+ <b>Figure 3</b>. The range of normalized CHD death rates for each risk classification bin.
+</p>
 
 ### Unsupervised Algorithms
 We will be using unsupervised clustering algorithms such as K-Means and GMM with different numbers of clusters to observe relationships between data points and observe the results. The goal of these clustering algorithms would be to maximize the purity of each cluster such that the points within the same cluster correspond to the same risk-level bin. We can evaluate the results by measuring the average purity across all the different clusters.
@@ -50,12 +62,30 @@ We plan to use supervised algorithms such as Random Forests to identify importan
 
 ### Unsupervised Algorithms
 When we applied the K-Means algorithm to our normalized dataset, we established that the approximate optimal number of clusters was around 6 using the elbow method.
+<p align="center">
+ <img src="./images/Midterm_fig04.png" /> </br>
+ <b>Figure 4</b>. Graph of K-Means loss when the algorithm is run with different numbers of clusters.
+</p>
 
 After running K-Means with 6 clusters, we measured the purity as a way to measure clustering performance. We found that the average purity for each cluster was 41.8%.
+
+<p align="center">
+ <img src="./images/Midterm_fig05.png" /> </br>
+ <b>Figure 5</b>. Bar graph representing the distribution of point risk-levels within each cluster.
+</p>
 
 Although seemingly low average purity, this value is still higher than the theoretical 25% average purity if the clusters were randomly assigned. With the K-Means results in hand, we transitioned to GMM to observe and compare clustering results.
 
 When we applied the GMM algorithm to our normalized dataset, we established (interestingly enough) that the approximate optimal number of clusters was around 6. To determine this, we used an information-theoretic approach where both the Bayesian Information Criterion (BIC) and Akaike Information Criterion (AIC) were considered.
+
+<p align="center">
+ <img src="./images/Midterm_fig06.png" /> </br>
+ <b>Figure 6</b>. Graph of AIC and BIC when GMM is run with different numbers of clusters
+</p>
+<p align="center">
+ <img src="./images/Midterm_fig06.png" /> </br>
+ <b>Figure 7</b>. GMM distribution, running on 6 clusters
+</p>
 
 After running GMM with 6 clusters, we found that the average purity was 97.6%. The goal of running GMM was to examine the resulting clusters and understand the similarities in contained features, especially in comparison with the output of K-Means. We are still analyzing these comparisons holistically, but it seems that the GMM algorithm clusters our data much more accurately than the hard K-Means clustering.
 
